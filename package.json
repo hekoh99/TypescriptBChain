@@ -1,0 +1,9 @@
+{
+  "name": "TypescriptPrac",
+  "version": "1.0.0",
+  "description": "learning typescript",
+  "main": "index.js",
+  "repository": "https://github.com/hekoh99/TypescriptBChain.git",
+  "author": "haeun",
+  "license": "MIT"
+}
