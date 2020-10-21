@@ -1,9 +1,26 @@
-const name = "haeun", age = 22;
+class Block{
+    public index:number;
+    public hash: string;
+    public previousHash : string;
+    public data : string;
+    public timestamp : number;
+    constructor(
+        index:number,
+        hash: string,
+        previousHash : string,
+        data : string,
+        timestamp : number){
+            this.index = index;
+            this.hash = hash;
+            this.previousHash = previousHash;
+            this.data = data;
+            this.timestamp = timestamp;
+        }
+}
 
-const sayHi = (name:string, age?:number) : string => {
-    return `hello ${name}, you are ${age}`;
-};
+const genesisBlock:Block = new Block(0, "example hash", "", "hello", 123456);
 
-console.log(sayHi(name, 22));
+let blockchain: [Block] = [genesisBlock];
+console.log(blockchain);
 
 export {};
