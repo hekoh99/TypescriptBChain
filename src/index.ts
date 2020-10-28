@@ -27,15 +27,28 @@ class Block{
         }
 }
 
-const genesisBlock:Block = new Block(0, "example hash", "", "hello", 123456);
+const genesisBlock:Block = new Block(0, "example hash", "", "genBlock", 123456);
 
 let blockchain: Block[] = [genesisBlock];
-console.log(blockchain);
 
 const getBlockchain = () : Block[] => blockchain;
 
-const getLatestBlock = () : Block => getBlockchain[blockchain.length - 1];
-
+const getLatestBlock = () : Block => blockchain[blockchain.length -1];
+    
 const getNewTimestamp = () : number => Math.round(new Date().getTime() / 1000);
+
+const createNewBlock = (data:string) : Block => {
+    const previousBlock:Block = getLatestBlock();
+    const newIndex:number = previousBlock.index + 1;
+    const newTimestamp :number = getNewTimestamp();
+    const newHash : string = Block.calculateBlockHash(newIndex, previousBlock.hash, newTimestamp, data);
+    const newBlock:Block = new Block(newIndex, newHash, previousBlock.hash, data, newTimestamp);
+    blockchain.push(newBlock);
+
+    return newBlock;
+}
+createNewBlock("hello new blcok");
+createNewBlock("second creation");
+console.log(blockchain);
 
 export {};
